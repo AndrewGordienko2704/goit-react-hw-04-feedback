@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Option, OptionList } from './FeedbackOptions.styled';
 
-export function FeedbackOptions ({ options, addFeedback }) {
+
+const options = ['good', 'neutral', 'bad'];
+export function FeedbackOptions ({ addFeedback }) {
   return (
     <OptionList>
       {options.map(option => {
         return (
-          <Option key={option} id={option} onClick={addFeedback}>
+          <Option key={option} type="button" onClick={() => addFeedback(option)}>
             {option}
           </Option>
         );
@@ -19,6 +21,6 @@ export function FeedbackOptions ({ options, addFeedback }) {
 
 
 FeedbackOptions.propTypes = {
-  options: PropTypes.arrayOf(PropTypes.string).isRequired,
-   addFeedback: PropTypes.func.isRequired,
+  options: PropTypes.array,
+   addFeedback: PropTypes.func,
 };
